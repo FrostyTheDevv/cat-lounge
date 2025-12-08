@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './page.module.css';
 
-export default function AdminLoginPage() {
+function AdminLoginContent() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [authUrl, setAuthUrl] = useState('');
@@ -91,5 +91,30 @@ export default function AdminLoginPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={
+      <main className={styles.main}>
+        <video autoPlay loop muted playsInline className={styles.backgroundVideo}>
+          <source src="/kittybackground.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.container}>
+          <div className={styles.loginCard}>
+            <div className={styles.header}>
+              <div className={styles.iconWrapper}>
+                <img src="/catloungepfp.webp" alt="Cat Lounge" className={styles.logo} />
+              </div>
+              <h1 className={styles.title}>Cat Lounge Admin</h1>
+              <p className={styles.subtitle}>Loading...</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    }>
+      <AdminLoginContent />
+    </Suspense>
   );
 }
