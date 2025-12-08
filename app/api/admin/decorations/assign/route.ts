@@ -114,7 +114,7 @@ export async function DELETE(request: NextRequest) {
  * GET /api/admin/decorations/assign?staffId=123
  * Get decoration assignments for a staff member or all assignments
  */
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   const authResult = await requireAdmin(request);
   if (authResult) return authResult;
 
