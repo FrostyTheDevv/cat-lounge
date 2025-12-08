@@ -12,11 +12,9 @@ import {
  * POST /api/admin/decorations/assign
  * Assign a decoration to a staff member
  */
-export async function POST(request: NextRequest) {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult;
-
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireAdmin(request);
     const { staffId, decorationType, decorationId, isOverride } = await request.json();
     
     if (!staffId || !decorationType || !decorationId) {
@@ -72,21 +70,20 @@ export async function POST(request: NextRequest) {
  * DELETE /api/admin/decorations/assign?assignmentId=123
  * Remove a decoration assignment
  */
-export async function DELETE(request: NextRequest) {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult;
-
-  const { searchParams } = new URL(request.url);
-  const assignmentId = searchParams.get('assignmentId');
-
-  if (!assignmentId) {
-    return NextResponse.json(
-      { success: false, error: 'Missing assignmentId parameter' },
-      { status: 400 }
-    );
-  }
-
+export async function DELETE(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireAdmin(request);
+    
+    const { searchParams } = new URL(request.url);
+    const assignmentId = searchParams.get('assignmentId');
+
+    if (!assignmentId) {
+      return NextResponse.json(
+        { success: false, error: 'Missing assignmentId parameter' },
+        { status: 400 }
+      );
+    }
+
     const auth = await getAdminAuth(request);
     if (!auth) {
       return NextResponse.json(
@@ -115,13 +112,12 @@ export async function DELETE(request: NextRequest) {
  * Get decoration assignments for a staff member or all assignments
  */
 export async function GET(request: NextRequest): Promise<NextResponse> {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult;
-
-  const { searchParams } = new URL(request.url);
-  const staffId = searchParams.get('staffId');
-
   try {
+    await requireAdmin(request);
+
+    const { searchParams } = new URL(request.url);
+    const staffId = searchParams.get('staffId');
+
     const assignments = staffId
       ? getStaffDecorationAssignments(parseInt(staffId))
       : getAllDecorationAssignments();

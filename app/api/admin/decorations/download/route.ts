@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireOwner } from '@/lib/adminAuth';
 import { downloadAllDecorationAssets } from '@/lib/assetOptimizer';
 
-export async function POST(request: NextRequest) {
-  const authResult = await requireOwner(request);
-  if (authResult) return authResult; // Not owner
-
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireOwner(request);
     const stats = await downloadAllDecorationAssets();
 
     return NextResponse.json({

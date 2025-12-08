@@ -6,11 +6,9 @@ import { syncStaffMemberDecorations, syncAllStaffDecorations } from '@/lib/disco
  * POST /api/admin/staff/sync-decorations
  * Syncs Discord profile decorations for staff members
  */
-export async function POST(request: NextRequest) {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult;
-
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireAdmin(request);
     const { discordId, staffId, syncAll } = await request.json();
     const auth = await getAdminAuth(request);
 
@@ -65,21 +63,20 @@ export async function POST(request: NextRequest) {
  * GET /api/admin/staff/sync-decorations
  * Get staff member's current decorations
  */
-export async function GET(request: NextRequest) {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult;
-
-  const { searchParams } = new URL(request.url);
-  const discordId = searchParams.get('discordId');
-
-  if (!discordId) {
-    return NextResponse.json(
-      { success: false, error: 'Missing discordId parameter' },
-      { status: 400 }
-    );
-  }
-
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireAdmin(request);
+    
+    const { searchParams } = new URL(request.url);
+    const discordId = searchParams.get('discordId');
+
+      if (!discordId) {
+      return NextResponse.json(
+        { success: false, error: 'Missing discordId parameter' },
+        { status: 400 }
+      );
+    }
+
     const { getStaffCurrentDecorations } = await import('@/lib/discordProfileSync');
     const decorations = getStaffCurrentDecorations(discordId);
 

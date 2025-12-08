@@ -9,7 +9,7 @@ import {
 } from '@/lib/database';
 import { requireAdmin } from '@/lib/adminAuth';
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     // Check admin authentication
     requireAdmin(request);

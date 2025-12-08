@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireOwner } from '@/lib/adminAuth';
 import { syncDecorationsFromGuild } from '@/lib/decorationFetcher';
 
-export async function POST(request: NextRequest) {
-  const authResult = await requireOwner(request);
-  if (authResult) return authResult; // Not owner
-
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireOwner(request);
     const stats = await syncDecorationsFromGuild();
 
     return NextResponse.json({

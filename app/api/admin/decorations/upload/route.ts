@@ -13,11 +13,9 @@ const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'im
  * POST /api/admin/decorations/upload
  * Upload a custom decoration
  */
-export async function POST(request: NextRequest) {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult;
-
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireAdmin(request);
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const name = formData.get('name') as string;

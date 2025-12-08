@@ -8,18 +8,17 @@ import {
   getRecentSyncLogs,
 } from '@/lib/database';
 
-export async function GET(request: NextRequest) {
-  const authResult = await requireAdmin(request);
-  if (authResult) return authResult; // Not admin
-
-  const { searchParams } = new URL(request.url);
-  const category = searchParams.get('category') || 'all';
-  const activeOnly = searchParams.get('active') !== 'false';
-  const search = searchParams.get('search')?.toLowerCase() || '';
-  const availability = searchParams.get('availability') || 'all'; // all, premium, free
-  const sort = searchParams.get('sort') || 'recent'; // recent, name, popular
-
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
+    await requireAdmin(request);
+    
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category') || 'all';
+    const activeOnly = searchParams.get('active') !== 'false';
+    const search = searchParams.get('search')?.toLowerCase() || '';
+    const availability = searchParams.get('availability') || 'all'; // all, premium, free
+    const sort = searchParams.get('sort') || 'recent'; // recent, name, popular
+
     let data: any = {};
 
     // Helper function to filter decorations
