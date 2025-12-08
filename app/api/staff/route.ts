@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllStaff } from '@/lib/database';
+import { getAllStaff } from '@/lib/database-async';
 
 export async function GET(request: NextRequest) {
   try {
-    const staff = getAllStaff();
+    const staff = await getAllStaff();
     
     // Add cache headers for better performance
     return NextResponse.json(staff, {

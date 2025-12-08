@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { updateStaffFromDiscord } from '@/lib/database';
+import { updateStaffFromDiscord } from '@/lib/database-async';
 
 // This endpoint receives Discord user data and syncs it to the database
 export async function POST(request: NextRequest) {
@@ -61,7 +61,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Update staff member data from Discord
-    updateStaffFromDiscord(discord_id, discord_tag, name, nickname, avatar_url, banner_url, avatar_decoration, role, bio);
+    await updateStaffFromDiscord({
+      discord_id,
+      discord_tag,
+      name,
+      nickname,
+      avatar_url,
+      banner_url,
+      avatar_decoration,
+      role,
+      bio
+    });
 
     return NextResponse.json({ 
       success: true, 

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database';
+import { removeNonStaffMembers, getAllStaff } from '@/lib/database-async';
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,34 +25,28 @@ export async function POST(request: NextRequest) {
     }
 
     // Get all staff members from database
-    interface StaffRecord {
-      id: number;
-      discord_id: string;
-      name: string;
-    }
-    
-    const allStaff = db.prepare('SELECT id, discord_id, name FROM staff').all() as StaffRecord[];
+    const allStaff = await getAllStaff();
 
     // Find staff to remove (those not in current_staff_ids)
-    const toRemove = allStaff.filter((staff) => 
+    const toRemove = allStaff.filter((staff: any) => 
       !current_staff_ids.includes(staff.discord_id)
     );
 
     if (toRemove.length > 0) {
       console.log(`Removing ${toRemove.length} demoted staff members:`);
       
-      const deleteStmt = db.prepare('DELETE FROM staff WHERE discord_id = ?');
-      
       for (const staff of toRemove) {
         console.log(`  - ${staff.name} (${staff.discord_id})`);
-        deleteStmt.run(staff.discord_id);
       }
+      
+      // Remove non-staff members
+      await removeNonStaffMembers(current_staff_ids);
     }
 
     return NextResponse.json({ 
       success: true,
       removed: toRemove.length,
-      members: toRemove.map((s) => s.name)
+      members: toRemove.map((s: any) => s.name)
     });
 
   } catch (error) {
