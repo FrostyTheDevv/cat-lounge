@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   title: 'Cat Lounge - A Cozy Community',
   description: 'Welcome to Cat Lounge, a cozy and inclusive community for cat lovers and friendly conversations',
   icons: {
-    icon: '/catloungepfp.webp',
+    icon: [
+      { url: '/catloungepfp.webp', type: 'image/webp' },
+    ],
     apple: '/apple-touch-icon.png',
   },
 }
