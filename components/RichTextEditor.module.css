@@ -1,0 +1,254 @@
+/* Discord emoji image style for markdown preview */
+.discordEmojiImg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(20, 20, 30, 0.6);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(30, 30, 45, 0.8);
+  border-bottom: 1px solid rgba(147, 112, 219, 0.3);
+}
+
+.toolbarGroup {
+  display: flex;
+  gap: 4px;
+  padding-right: 8px;
+  border-right: 1px solid rgba(147, 112, 219, 0.2);
+}
+
+.toolbarGroup:last-child {
+  border-right: none;
+  margin-left: auto;
+}
+
+.toolbarButton {
+  background: rgba(147, 112, 219, 0.1);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-radius: 4px;
+  color: rgba(200, 180, 255, 0.9);
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.toolbarButton:hover {
+  background: rgba(147, 112, 219, 0.2);
+  border-color: rgba(147, 112, 219, 0.5);
+  transform: translateY(-1px);
+}
+
+.toolbarButton:active {
+  transform: translateY(0);
+}
+
+.toolbarButton.active {
+  background: rgba(147, 112, 219, 0.3);
+  border-color: rgba(147, 112, 219, 0.6);
+  color: rgba(220, 200, 255, 1);
+}
+
+.editorContainer {
+  position: relative;
+  min-height: 300px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 16px;
+  background: rgba(20, 20, 30, 0.6);
+  border: none;
+  color: rgba(200, 180, 255, 0.9);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: rgba(200, 180, 255, 0.4);
+}
+
+.preview {
+  padding: 16px;
+  min-height: 300px;
+  color: rgba(200, 180, 255, 0.9);
+  line-height: 1.6;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+/* Markdown Preview Styling */
+.preview h1 {
+  font-size: 2em;
+  margin: 0.5em 0;
+  color: rgba(220, 200, 255, 1);
+  border-bottom: 2px solid rgba(147, 112, 219, 0.5);
+  padding-bottom: 0.3em;
+}
+
+.preview h2 {
+  font-size: 1.5em;
+  margin: 0.5em 0;
+  color: rgba(220, 200, 255, 1);
+  border-bottom: 1px solid rgba(147, 112, 219, 0.3);
+  padding-bottom: 0.3em;
+}
+
+.preview h3 {
+  font-size: 1.25em;
+  margin: 0.5em 0;
+  color: rgba(220, 200, 255, 1);
+}
+
+.preview h4,
+.preview h5,
+.preview h6 {
+  margin: 0.5em 0;
+  color: rgba(220, 200, 255, 0.9);
+}
+
+.preview p {
+  margin: 0.8em 0;
+}
+
+.preview strong {
+  color: rgba(220, 200, 255, 1);
+  font-weight: 600;
+}
+
+.preview em {
+  color: rgba(200, 180, 255, 0.95);
+}
+
+.preview a {
+  color: rgba(147, 112, 219, 1);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.preview a:hover {
+  color: rgba(167, 132, 239, 1);
+}
+
+.preview ul,
+.preview ol {
+  margin: 0.8em 0;
+  padding-left: 2em;
+}
+
+.preview li {
+  margin: 0.4em 0;
+}
+
+.preview blockquote {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-left: 4px solid rgba(147, 112, 219, 0.6);
+  background: rgba(147, 112, 219, 0.1);
+  border-radius: 0 4px 4px 0;
+}
+
+.preview blockquote p {
+  margin: 0.5em 0;
+}
+
+.preview code {
+  background: rgba(147, 112, 219, 0.15);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  color: rgba(220, 200, 255, 0.95);
+}
+
+.preview pre {
+  margin: 1em 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.preview pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.preview table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.preview th,
+.preview td {
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.preview th {
+  background: rgba(147, 112, 219, 0.2);
+  color: rgba(220, 200, 255, 1);
+  font-weight: 600;
+}
+
+.preview tr:hover {
+  background: rgba(147, 112, 219, 0.05);
+}
+
+.preview hr {
+  border: none;
+  border-top: 2px solid rgba(147, 112, 219, 0.3);
+  margin: 2em 0;
+}
+
+.emojiPickerDropdown {
+  position: absolute;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .toolbar {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .toolbarGroup {
+    gap: 3px;
+    padding-right: 6px;
+  }
+
+  .toolbarButton {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .textarea,
+  .preview {
+    min-height: 200px;
+    padding: 12px;
+    font-size: 13px;
+  }
+}

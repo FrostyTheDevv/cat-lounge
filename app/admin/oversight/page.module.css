@@ -1,0 +1,434 @@
+.container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #ff6b9d;
+}
+
+.header p {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* Status Section */
+.statusSection {
+  margin-bottom: 2rem;
+}
+
+.statusCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 107, 157, 0.2);
+}
+
+.statusCard h3 {
+  margin-bottom: 1rem;
+  color: #ff6b9d;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.statusLabel {
+  font-weight: 600;
+  color: #ccc;
+}
+
+.statusValue {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.locked {
+  color: #ff4444 !important;
+}
+
+.unlocked {
+  color: #44ff88 !important;
+}
+
+/* Controls Section */
+.controlsSection {
+  margin-bottom: 2rem;
+}
+
+.controlsSection h2 {
+  margin-bottom: 1rem;
+  color: #ff6b9d;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnLock {
+  background: #ff4444;
+  color: white;
+}
+
+.btnLock:hover {
+  background: #cc0000;
+}
+
+.btnUnlock {
+  background: #44ff88;
+  color: #000;
+}
+
+.btnUnlock:hover {
+  background: #00cc66;
+}
+
+.btnBackup {
+  background: #4488ff;
+  color: white;
+}
+
+.btnBackup:hover {
+  background: #0066cc;
+}
+
+.btnRefresh {
+  background: #ffaa44;
+  color: #000;
+}
+
+.btnRefresh:hover {
+  background: #cc8800;
+}
+
+.btnSync {
+  background: #aa44ff;
+  color: white;
+}
+
+.btnSync:hover:not(:disabled) {
+  background: #8800cc;
+}
+
+.btnSync:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.syncStatus {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(170, 68, 255, 0.1);
+  border: 1px solid rgba(170, 68, 255, 0.3);
+  border-radius: 8px;
+  color: #aa44ff;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btnDownload {
+  background: #44aaff;
+  color: white;
+}
+
+.btnDownload:hover:not(:disabled) {
+  background: #0088cc;
+}
+
+.btnDownload:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.downloadStatus {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(68, 170, 255, 0.1);
+  border: 1px solid rgba(68, 170, 255, 0.3);
+  border-radius: 8px;
+  color: #44aaff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Staff Section */
+.staffSection {
+  margin-bottom: 2rem;
+}
+
+.staffSection h2 {
+  margin-bottom: 1rem;
+  color: #ff6b9d;
+}
+
+.staffGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.staffCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 107, 157, 0.2);
+  transition: all 0.3s ease;
+}
+
+.staffCard:hover {
+  border-color: rgba(255, 107, 157, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 107, 157, 0.2);
+}
+
+.staffHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #ff6b9d;
+}
+
+.staffInfo h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.discordTag {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+}
+
+.staffMeta {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.metaLabel {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.metaValue {
+  color: #fff;
+  font-weight: 600;
+}
+
+.viewChangesBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 107, 157, 0.2);
+  border: 1px solid rgba(255, 107, 157, 0.4);
+  border-radius: 6px;
+  color: #ff6b9d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewChangesBtn:hover {
+  background: rgba(255, 107, 157, 0.3);
+  border-color: rgba(255, 107, 157, 0.6);
+}
+
+/* Changes Panel */
+.changesPanel {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.changesPanel h4 {
+  margin-bottom: 1rem;
+  color: #ff6b9d;
+}
+
+.noChanges {
+  color: #888;
+  text-align: center;
+  padding: 1rem;
+}
+
+.changesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.changeItem {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid #ff6b9d;
+}
+
+.changeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.changeType {
+  font-weight: 600;
+  color: #ff6b9d;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.changeDate {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.changeBy {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.changeDetails {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.changeField {
+  margin-bottom: 0.25rem;
+  color: #ccc;
+}
+
+.oldValue {
+  color: #ff8888;
+  margin: 0.25rem 0;
+}
+
+.newValue {
+  color: #88ff88;
+  margin: 0.25rem 0;
+}
+
+/* Recent Changes Section */
+.changesSection {
+  margin-bottom: 2rem;
+}
+
+.changesSection h2 {
+  margin-bottom: 1rem;
+  color: #ff6b9d;
+}
+
+.recentChangesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recentChangeItem {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #ff6b9d;
+  transition: all 0.3s ease;
+}
+
+.recentChangeItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.recentChangeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.staffName {
+  font-weight: 600;
+  color: #fff;
+}
+
+.recentChangeBody {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.changedBy {
+  color: #888;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .staffGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

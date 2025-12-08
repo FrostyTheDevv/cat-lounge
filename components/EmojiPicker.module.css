@@ -1,0 +1,80 @@
+.pickerContainer {
+  background: var(--modal-bg, #222);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  padding: 16px;
+  width: 340px;
+  max-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+.toolbar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.toolbar button {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.toolbar .active {
+  background: #444;
+  color: #fff;
+}
+.search {
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #181818;
+  color: #eee;
+  font-size: 15px;
+}
+.recentSection {
+  margin-bottom: 10px;
+}
+.sectionTitle {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+.emojiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+  gap: 6px;
+}
+.emojiButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.emojiButton:hover {
+  background: #333;
+}
+.emojiImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+.loading {
+  text-align: center;
+  color: #aaa;
+  font-size: 15px;
+  padding: 20px 0;
+}

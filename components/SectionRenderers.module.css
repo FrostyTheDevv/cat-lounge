@@ -1,0 +1,333 @@
+/* Section Renderers Styles */
+
+.sectionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.section {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sectionContent {
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  line-height: 1.6;
+}
+
+.emptyMessage {
+  color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+  font-style: italic;
+  margin: 0;
+}
+
+/* About Me Section */
+.aboutMe {
+  font-size: 14px;
+}
+
+.aboutMe p {
+  margin: 0 0 12px 0;
+}
+
+.aboutMe h1, .aboutMe h2, .aboutMe h3, .aboutMe h4, .aboutMe h5, .aboutMe h6 {
+  margin: 16px 0 8px 0;
+  color: var(--text-primary, #ffffff);
+}
+
+.aboutMe ul, .aboutMe ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.aboutMe code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.aboutMe pre {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.aboutMe blockquote {
+  border-left: 4px solid var(--primary-color, #5865f2);
+  margin: 12px 0;
+  padding-left: 16px;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+}
+
+/* Fun Facts Section */
+.funFactsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.funFact {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.funFact:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.factIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.factText {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Favorites Section */
+.favoritesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.favoriteCategory {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.categoryTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary-color, #5865f2);
+  margin: 0 0 10px 0;
+}
+
+.categoryItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.categoryItem {
+  font-size: 14px;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+  padding-left: 12px;
+  position: relative;
+}
+
+.categoryItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color, #5865f2);
+}
+
+/* Skills Section */
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skillName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.skillLevel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color, #5865f2);
+}
+
+.skillProgress {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skillBar {
+  height: 100%;
+  background: #5865f2;
+  border-radius: 4px;
+  transition: width 0.6s ease-out;
+}
+
+/* Quotes Section */
+.quotesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quote {
+  margin: 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--primary-color, #5865f2);
+  border-radius: 8px;
+}
+
+.quoteText {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-primary, #ffffff);
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+}
+
+.quoteAttribution {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+}
+
+.quoteAuthor {
+  font-weight: 600;
+}
+
+.quoteSource {
+  font-style: italic;
+}
+
+/* Hobbies Section */
+.hobbiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.hobbyCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hobbyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hobbyImage {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hobbyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hobbyCard:hover .hobbyImage img {
+  transform: scale(1.05);
+}
+
+.hobbyContent {
+  padding: 14px;
+}
+
+.hobbyTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  margin: 0 0 8px 0;
+}
+
+.hobbyDescription {
+  font-size: 13px;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section {
+    padding: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .favoritesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hobbiesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionsContainer {
+    gap: 16px;
+  }
+
+  .section {
+    padding: 14px;
+  }
+
+  .sectionTitle {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+}

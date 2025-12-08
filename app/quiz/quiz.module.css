@@ -1,0 +1,85 @@
+.main {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.walkingCat {
+  position: absolute;
+  bottom: 35%;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  background-image: url('/kittybackground.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: walkAcross 15s linear infinite;
+  z-index: 1;
+  will-change: transform;
+}
+
+@keyframes walkAcross {
+  from {
+    transform: translateX(-150px) scaleX(-1);
+  }
+  to {
+    transform: translateX(calc(100vw + 150px)) scaleX(-1);
+  }
+}
+
+.container {
+  text-align: center;
+  max-width: 600px;
+  background: rgba(55, 65, 81, 0.85);
+  padding: 3rem;
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+  position: relative;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ff8c42;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #5865f2;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: #4752c4;
+  transform: translateY(-1px);
+}

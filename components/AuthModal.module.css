@@ -1,0 +1,246 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.modal {
+  background: rgba(30, 33, 38, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 0;
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.modalVideoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.modalVideoWrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.header {
+  padding: 40px 40px 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 30px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input, .fileInput {
+  padding: 14px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.input:focus, .fileInput:focus {
+  outline: none;
+  border-color: rgba(147, 112, 219, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 4px rgba(147, 112, 219, 0.1);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fileInput {
+  cursor: pointer;
+  padding: 12px 16px;
+}
+
+.fileInput::file-selector-button {
+  background: rgba(147, 112, 219, 0.2);
+  border: 1px solid rgba(147, 112, 219, 0.4);
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 8px 16px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.fileInput::file-selector-button:hover {
+  background: rgba(147, 112, 219, 0.3);
+}
+
+.submitButton {
+  padding: 16px;
+  background: linear-gradient(135deg, #9370db 0%, #8a2be2 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 16px rgba(147, 112, 219, 0.3);
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(147, 112, 219, 0.5);
+  background: linear-gradient(135deg, #a57ee0 0%, #9b3ef0 100%);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+.toggleButton {
+  margin-top: 0;
+  padding: 20px 40px 30px;
+  background: transparent;
+  border: none;
+  color: rgba(147, 112, 219, 0.9);
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: none;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+.toggleButton:hover {
+  color: rgba(147, 112, 219, 1);
+  text-decoration: underline;
+}
+
+.successMessage {
+  padding: 14px;
+  background: rgba(76, 175, 80, 0.15);
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 12px;
+  color: #66bb6a;
+  text-align: center;
+  font-weight: 600;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.errorMessage {
+  padding: 14px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 2px solid rgba(244, 67, 54, 0.4);
+  border-radius: 12px;
+  color: #ef5350;
+  text-align: center;
+  font-weight: 600;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+}

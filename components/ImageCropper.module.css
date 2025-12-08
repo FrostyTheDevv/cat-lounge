@@ -1,0 +1,155 @@
+.cropperModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.cropperContainer {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.cropperHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cropperHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: white;
+}
+
+.cropArea {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: #000;
+}
+
+.controls {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.zoomLabel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.zoomLabel span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 50px;
+}
+
+.zoomSlider {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.zoomSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.zoomSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.zoomSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.zoomSlider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  justify-content: flex-end;
+}
+
+.cancelButton,
+.confirmButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.cancelButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.cancelButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.confirmButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.confirmButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}

@@ -1,0 +1,292 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+}
+
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(147, 112, 219, 0.6);
+  transform: translateX(-5px);
+}
+
+.loginCard {
+  background: rgba(30, 33, 38, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.header {
+  padding: 40px 40px 30px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+}
+
+.iconWrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #9370db 0%, #8a2be2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(147, 112, 219, 0.4);
+  overflow: hidden;
+  padding: 8px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.form {
+  padding: 30px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.error {
+  padding: 14px;
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  border-radius: 10px;
+  color: #fca5a5;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  padding: 14px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(147, 112, 219, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 4px rgba(147, 112, 219, 0.1);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.infoBox {
+  padding: 20px;
+  background: rgba(88, 101, 242, 0.1);
+  border: 1px solid rgba(88, 101, 242, 0.3);
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.infoBox p {
+  margin: 0.5rem 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.infoSubtext {
+  font-size: 0.875rem !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 400 !important;
+}
+
+.discordButton {
+  width: 100%;
+  padding: 18px;
+  background: #5865F2;
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(88, 101, 242, 0.4);
+}
+
+.discordButton:hover:not(:disabled) {
+  background: #4752C4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(88, 101, 242, 0.6);
+}
+
+.discordButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.discordButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.discordIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.securityNote {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin: 0;
+  padding-top: 0.5rem;
+}
+
+.submitButton {
+  padding: 16px;
+  background: linear-gradient(135deg, #9370db 0%, #8a2be2 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 16px rgba(147, 112, 219, 0.3);
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(147, 112, 219, 0.5);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .backButton {
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .header {
+    padding: 30px 25px 20px;
+  }
+
+  .form {
+    padding: 25px 25px 35px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
