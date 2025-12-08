@@ -12,7 +12,8 @@ const client = new Client({
 
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 const DISCORD_GUILD_ID = process.env.DISCORD_GUILD_ID;
-const SYNC_API_URL = 'http://localhost:3000/api/discord/sync';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+const SYNC_API_URL = `${BASE_URL}/api/discord/sync`;
 
 // Permissions that indicate staff roles (Administrator, Manage Server, Moderate Members, etc.)
 const STAFF_PERMISSIONS = [
