@@ -378,6 +378,15 @@ export async function getUserByUsername(username: string) {
   }>('SELECT * FROM users WHERE username = ?', [username]);
 }
 
+export async function createUser(username: string, email: string, password: string, pfp: string = '/noprofile.png') {
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const result = await execute(
+    'INSERT INTO users (username, email, password, pfp) VALUES (?, ?, ?, ?)',
+    [username, email, hashedPassword, pfp]
+  );
+  return result.lastInsertRowid;
+}
+
 export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
   return bcrypt.compareSync(password, hashedPassword);
 }
@@ -428,4 +437,12 @@ export async function resetFailedAttempts(username: string) {
     'UPDATE users SET failed_login_attempts = 0, account_locked_until = NULL WHERE username = ?',
     [username]
   );
+}
+
+export async function createUser(username: string, passwordHash: string, profilePicture?: string): Promise<number> {
+  const result = await execute(
+    'INSERT INTO users (username, password_hash, profile_picture, created_at) VALUES (?, ?, ?, ?)',
+    [username, passwordHash, profilePicture || '/noprofile.png', new Date().toISOString()]
+  );
+  return Number(result.lastInsertRowid);
 }
