@@ -122,11 +122,11 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      const result = await createUser(sanitizedUsername, password, pfpPath || undefined);
+      const userId = await createUser(sanitizedUsername, password, pfpPath || undefined);
       
       // Generate JWT tokens
       const tokenPayload = {
-        userId: result.lastInsertRowid as number,
+        userId: userId,
         username: sanitizedUsername,
         pfp: pfpPath
       };
@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
           success: true, 
           message: 'User created successfully',
           user: {
-            id: result.lastInsertRowid,
+            id: userId,
             username: sanitizedUsername,
             pfp: pfpPath || '/noprofile.png'
           },
