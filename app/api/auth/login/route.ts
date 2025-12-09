@@ -7,7 +7,7 @@ import {
   isAccountLocked,
   lockAccount,
   resetFailedAttempts
-} from '@/lib/database';
+} from '@/lib/database-async';
 import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
 import { validateCSRFToken } from '@/lib/csrf';
 
@@ -46,19 +46,19 @@ export async function POST(request: NextRequest) {
     const sanitizedUsername = username.trim().replace(/[<>]/g, '');
 
     // Check rate limiting (max 5 failed attempts per IP in 15 minutes)
-    const recentFailedAttempts = getRecentFailedAttempts(ipAddress);
+    const recentFailedAttempts = await getRecentFailedAttempts(ipAddress);
     if (recentFailedAttempts >= 5) {
-      recordLoginAttempt(ipAddress, sanitizedUsername, false);
+      await recordLoginAttempt(ipAddress, sanitizedUsername, false);
       return NextResponse.json(
         { error: 'Too many failed attempts. Please try again later.' },
         { status: 429 }
       );
     }
 
-    const user = getUserByUsername(sanitizedUsername);
+    const user = await getUserByUsername(sanitizedUsername);
 
     if (!user) {
-      recordLoginAttempt(ipAddress, sanitizedUsername, false);
+      await recordLoginAttempt(ipAddress, sanitizedUsername, false);
       return NextResponse.json(
         { error: 'Invalid username or password' },
         { status: 401 }
@@ -66,23 +66,23 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if account is locked
-    if (isAccountLocked(sanitizedUsername)) {
-      recordLoginAttempt(ipAddress, sanitizedUsername, false);
+    if (await isAccountLocked(sanitizedUsername)) {
+      await recordLoginAttempt(ipAddress, sanitizedUsername, false);
       return NextResponse.json(
         { error: 'Account is temporarily locked due to multiple failed login attempts' },
         { status: 403 }
       );
     }
 
-    const isValidPassword = verifyPassword(password, user.password);
+    const isValidPassword = await verifyPassword(password, user.password);
 
     if (!isValidPassword) {
-      recordLoginAttempt(ipAddress, sanitizedUsername, false);
+      await recordLoginAttempt(ipAddress, sanitizedUsername, false);
       
       // Lock account after 5 failed attempts
-      const userFailedAttempts = getRecentFailedAttempts(ipAddress, 60);
+      const userFailedAttempts = await getRecentFailedAttempts(ipAddress, 60);
       if (userFailedAttempts >= 4) {
-        lockAccount(sanitizedUsername, 30);
+        await lockAccount(sanitizedUsername, 30);
         return NextResponse.json(
           { error: 'Too many failed login attempts. Account locked for 30 minutes.' },
           { status: 403 }
@@ -96,8 +96,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Successful login
-    recordLoginAttempt(ipAddress, sanitizedUsername, true);
-    resetFailedAttempts(sanitizedUsername);
+    await recordLoginAttempt(ipAddress, sanitizedUsername, true);
+    await resetFailedAttempts(sanitizedUsername);
 
     // Generate JWT tokens
     const tokenPayload = {

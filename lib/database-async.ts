@@ -354,4 +354,78 @@ export const db = {
   saveQuizResult,
   getQuizResult,
   getAllQuizResults,
+  getUserByUsername,
+  verifyPassword,
+  recordLoginAttempt,
+  getRecentFailedAttempts,
+  isAccountLocked,
+  lockAccount,
+  resetFailedAttempts,
 };
+
+// ==================== USER AUTHENTICATION FUNCTIONS ====================
+
+export async function getUserByUsername(username: string) {
+  return await queryFirst<{
+    id: number;
+    username: string;
+    password: string;
+    email: string;
+    pfp: string;
+    account_locked_until: string | null;
+    failed_login_attempts: number;
+    created_at: string;
+  }>('SELECT * FROM users WHERE username = ?', [username]);
+}
+
+export async function verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
+  return bcrypt.compareSync(password, hashedPassword);
+}
+
+export async function recordLoginAttempt(ipAddress: string, username: string | null, success: boolean) {
+  await execute(
+    'INSERT INTO login_attempts (ip_address, username, success) VALUES (?, ?, ?)',
+    [ipAddress, username, success ? 1 : 0]
+  );
+}
+
+export async function getRecentFailedAttempts(ipAddress: string, minutes: number = 15): Promise<number> {
+  const safeMinutes = Math.max(1, Math.min(1440, Math.floor(minutes)));
+  const result = await queryFirst<{ count: number }>(
+    `SELECT COUNT(*) as count 
+     FROM login_attempts 
+     WHERE ip_address = ? 
+     AND success = 0 
+     AND attempted_at > datetime('now', '-' || ? || ' minutes')`,
+    [ipAddress, safeMinutes]
+  );
+  return result?.count || 0;
+}
+
+export async function isAccountLocked(username: string): Promise<boolean> {
+  const result = await queryFirst<{ account_locked_until: string | null }>(
+    'SELECT account_locked_until FROM users WHERE username = ?',
+    [username]
+  );
+  
+  if (!result || !result.account_locked_until) return false;
+  
+  const lockUntil = new Date(result.account_locked_until);
+  const now = new Date();
+  return lockUntil > now;
+}
+
+export async function lockAccount(username: string, minutes: number = 30) {
+  const lockUntil = new Date(Date.now() + minutes * 60 * 1000).toISOString();
+  await execute(
+    'UPDATE users SET account_locked_until = ?, failed_login_attempts = failed_login_attempts + 1 WHERE username = ?',
+    [lockUntil, username]
+  );
+}
+
+export async function resetFailedAttempts(username: string) {
+  await execute(
+    'UPDATE users SET failed_login_attempts = 0, account_locked_until = NULL WHERE username = ?',
+    [username]
+  );
+}
