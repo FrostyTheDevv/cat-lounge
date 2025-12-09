@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createUser } from '@/lib/database';
+import { createUser } from '@/lib/database-async';
 import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
 import { validateCSRFToken } from '@/lib/csrf';
-import path from 'path';
-import { writeFile } from 'fs/promises';
+import { put } from '@vercel/blob';
 
 export async function POST(request: NextRequest) {
   try {
@@ -86,21 +85,44 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let pfpPath = null;
+    // Handle profile picture upload to Vercel Blob Storage
+    let pfpPath: string | null = null;
+    
+    if (pfpFile && pfpFile.size > 0) {
+      try {
+        // Validate file type
+        if (!pfpFile.type.startsWith('image/')) {
+          return NextResponse.json(
+            { error: 'Profile picture must be an image file' },
+            { status: 400 }
+          );
+        }
 
-    if (pfpFile) {
-      const bytes = await pfpFile.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      
-      const filename = `${Date.now()}-${pfpFile.name}`;
-      const filepath = path.join(process.cwd(), 'public', 'uploads', filename);
-      
-      await writeFile(filepath, buffer);
-      pfpPath = `/uploads/${filename}`;
+        // Validate file size (max 5MB)
+        if (pfpFile.size > 5 * 1024 * 1024) {
+          return NextResponse.json(
+            { error: 'Profile picture must be less than 5MB' },
+            { status: 400 }
+          );
+        }
+
+        // Upload to Vercel Blob
+        const filename = `profile-${Date.now()}-${sanitizedUsername}.${pfpFile.type.split('/')[1]}`;
+        const blob = await put(filename, pfpFile, {
+          access: 'public',
+          addRandomSuffix: true,
+        });
+        
+        pfpPath = blob.url;
+      } catch (uploadError) {
+        console.error('Profile picture upload error:', uploadError);
+        // Continue with signup even if upload fails, use default image
+        pfpPath = null;
+      }
     }
 
     try {
-      const result = createUser(sanitizedUsername, password, pfpPath || undefined);
+      const result = await createUser(sanitizedUsername, password, pfpPath || undefined);
       
       // Generate JWT tokens
       const tokenPayload = {

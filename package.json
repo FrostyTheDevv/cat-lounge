@@ -25,6 +25,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.6",
+    "@vercel/blob": "^2.0.0",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.4.1",
     "cookie": "^1.0.2",
