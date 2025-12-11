@@ -103,3 +103,54 @@
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .errorContainer {
+    padding: 1rem;
+  }
+
+  .errorCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .errorIcon {
+    font-size: 3rem;
+  }
+
+  .errorTitle {
+    font-size: 1.5rem;
+  }
+
+  .errorMessage {
+    font-size: 1rem;
+  }
+
+  .retryButton,
+  .homeButton {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .errorIcon {
+    font-size: 2.5rem;
+  }
+
+  .errorTitle {
+    font-size: 1.3rem;
+  }
+
+  .errorMessage {
+    font-size: 0.95rem;
+  }
+
+  .errorDetails pre {
+    font-size: 0.75rem;
+  }
+}

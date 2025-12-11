@@ -184,3 +184,184 @@
   background: rgba(255, 255, 255, 0.1);
   margin: 0;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px 20px;
+  }
+
+  .logoIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logoText {
+    font-size: 16px;
+  }
+
+  .nav {
+    gap: 10px;
+  }
+
+  .navButton, .langButton {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .dropdownMenu {
+    min-width: 140px;
+    font-size: 14px;
+  }
+
+  .flag {
+    width: 18px;
+    height: 13px;
+  }
+
+  .flagSmall {
+    width: 16px;
+    height: 12px;
+  }
+
+  .arrow {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px 12px;
+  }
+
+  .logoIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+  .nav {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .navButton, .langButton {
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .navButton .arrow {
+    display: none;
+  }
+
+  .langButton {
+    min-width: 60px;
+  }
+
+  .dropdownMenu {
+    min-width: 160px;
+    right: 0;
+    left: auto;
+    font-size: 14px;
+  }
+
+  .dropdownItem {
+    padding: 12px 16px;
+  }
+
+  .profilePicture {
+    width: 32px;
+    height: 32px;
+  }
+
+  .username {
+    display: none;
+  }
+
+  /* Mobile hamburger menu */
+  .mobileMenuButton {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .nav {
+    position: fixed;
+    top: 68px;
+    left: -100%;
+    width: 100%;
+    max-width: 320px;
+    height: calc(100vh - 68px);
+    background: #1e2126;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 16px;
+    transition: left 0.3s ease;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    overflow-y: auto;
+  }
+
+  .mobileNavOpen {
+    left: 0;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .navButton, .langButton {
+    width: 100%;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  .dropdownMenu {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .profileWrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profileDropdown {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Hide hamburger on desktop */
+.mobileMenuButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuButton {
+    display: flex;
+  }
+}

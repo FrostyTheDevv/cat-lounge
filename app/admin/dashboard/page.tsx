@@ -396,15 +396,6 @@ export default function AdminDashboard() {
           <div className={styles.headerRight}>
             <button 
               className={styles.navButton}
-              onClick={() => router.push('/admin/decorations')}
-            >
-              <svg className={styles.navIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-              </svg>
-              Decorations
-            </button>
-            <button 
-              className={styles.navButton}
               onClick={() => router.push('/admin/quiz-stats')}
             >
               <svg className={styles.navIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -450,24 +441,6 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          <div className={styles.statCard}>
-            <span className={styles.statIcon}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                <line x1="9" y1="9" x2="9.01" y2="9" />
-                <line x1="15" y1="9" x2="15.01" y2="9" />
-                <path d="M12 2a10 10 0 0 0-10 10c0 5.5 4.5 10 10 10" />
-                <path d="M22 12c0-1.7-.4-3.3-1.2-4.7" />
-              </svg>
-            </span>
-            <div>
-              <div className={styles.statValue}>
-                {staffMembers.filter(m => m.avatar_decoration).length}
-              </div>
-              <div className={styles.statLabel}>With Decorations</div>
-            </div>
-          </div>
         </div>
 
         {/* Staff Grid */}

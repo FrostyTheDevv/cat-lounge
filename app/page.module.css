@@ -587,22 +587,110 @@
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 40px 24px;
+    min-height: auto;
+  }
+
+  .floatingNav {
+    padding: 16px 20px;
+  }
+
+  .navLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navTitle {
+    font-size: 18px;
+  }
+
+  .navButtons {
+    gap: 8px;
+  }
+
+  .navLoginButton,
+  .navStaffButton {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 
   .mainTitle {
-    font-size: 42px;
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
   }
 
   .buttons {
     flex-direction: column;
+    width: 100%;
   }
 
   .orangeButton,
   .blueButton {
     justify-content: center;
+    width: 100%;
+    font-size: 16px;
+    padding: 14px 24px;
   }
 
   .rightSection {
     order: -1;
+  }
+
+  .catImage {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingNav {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .navButtons {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .navLoginButton,
+  .navStaffButton {
+    flex: 1;
+  }
+
+  .container {
+    padding: 24px 16px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .catImage {
+    width: 220px;
+    height: 220px;
+  }
+
+  .aboutSection {
+    padding: 40px 16px;
+  }
+
+  .aboutBubble {
+    padding: 24px 20px;
+  }
+
+  .aboutTitle {
+    font-size: 22px;
+  }
+
+  .featureGrid {
+    gap: 12px;
   }
 }

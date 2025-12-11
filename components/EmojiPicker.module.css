@@ -78,3 +78,90 @@
   font-size: 15px;
   padding: 20px 0;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .pickerContainer {
+    width: 100%;
+    max-width: 340px;
+    padding: 12px;
+    max-height: 400px;
+  }
+
+  .toolbar button {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+
+  .search {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .emojiGrid {
+    grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+    gap: 4px;
+  }
+
+  .emojiButton {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .emojiImg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pickerContainer {
+    width: calc(100vw - 32px);
+    max-width: none;
+    padding: 10px;
+    max-height: 350px;
+  }
+
+  .toolbar {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .toolbar button {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .search {
+    font-size: 13px;
+    padding: 5px 8px;
+    margin-bottom: 8px;
+  }
+
+  .emojiGrid {
+    grid-template-columns: repeat(auto-fill, minmax(28px, 1fr));
+    gap: 3px;
+  }
+
+  .emojiButton {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+
+  .emojiImg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .sectionTitle {
+    font-size: 12px;
+  }
+
+  .loading {
+    font-size: 14px;
+    padding: 15px 0;
+  }
+}

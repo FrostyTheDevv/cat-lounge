@@ -434,3 +434,61 @@
     line-height: 1.5;
   }
 }
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .container {
+    padding: 12px 8px;
+  }
+
+  .staffGrid {
+    gap: 12px;
+  }
+
+  .cardBanner {
+    height: 80px;
+  }
+
+  .avatarWrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .avatarDecoration {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .name {
+    font-size: 1.1rem;
+  }
+
+  .discordTag {
+    font-size: 0.8rem;
+  }
+
+  .customRole {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .bioContainer {
+    padding: 10px;
+  }
+
+  .bioText {
+    font-size: 0.85rem;
+  }
+}

@@ -18,6 +18,7 @@ export default function Header({ onAuthClick }: HeaderProps) {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [user, setUser] = useState<{ username: string; pfp: string } | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const currentLanguage = languages.find(l => l.code === language) || languages[0];
   
@@ -51,7 +52,18 @@ export default function Header({ onAuthClick }: HeaderProps) {
           <span className={styles.logoText}>Cat Lounge</span>
         </div>
 
-        <nav className={styles.nav}>
+        {/* Mobile hamburger menu button */}
+        <button 
+          className={styles.mobileMenuButton}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={styles.hamburger}></span>
+          <span className={styles.hamburger}></span>
+          <span className={styles.hamburger}></span>
+        </button>
+
+        <nav className={`${styles.nav} ${mobileMenuOpen ? styles.mobileNavOpen : ''}`}>
           <div className={styles.dropdown}>
             <button 
               className={styles.navButton}

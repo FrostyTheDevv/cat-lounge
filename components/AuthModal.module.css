@@ -244,3 +244,119 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    max-width: none;
+    margin: 16px;
+  }
+
+  .content {
+    padding: 32px 24px;
+  }
+
+  .closeButton {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .header h2 {
+    font-size: 26px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  .inputGroup label {
+    font-size: 13px;
+  }
+
+  .input {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .loginButton {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .divider {
+    margin: 20px 0;
+  }
+
+  .footer {
+    padding: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    width: calc(100% - 24px);
+    margin: 12px;
+    border-radius: 16px;
+  }
+
+  .content {
+    padding: 24px 20px;
+  }
+
+  .closeButton {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .profilePicContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .header h2 {
+    font-size: 22px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  .inputGroup {
+    gap: 6px;
+  }
+
+  .input {
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+
+  .loginButton {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .divider {
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  .discordButton {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .footer {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .footerButton {
+    font-size: 13px;
+  }
+}
