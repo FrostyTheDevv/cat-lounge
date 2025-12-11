@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { QUIZ_QUESTIONS, CAT_ARCHETYPES } from '@/lib/quizConfig';
-import { saveQuizResult, updateQuizResult, getQuizResultByDiscordId, saveAnswerPattern } from '@/lib/database';
+import { saveQuizResult, getQuizResult, saveAnswerPattern } from '@/lib/database-async';
 
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN!;
 const DISCORD_GUILD_ID = process.env.DISCORD_GUILD_ID!;
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
             weights[key] = value;
           }
         });
-        saveAnswerPattern(
+        await saveAnswerPattern(
           session.discordUserId,
           answer.questionId,
           answer.optionIndex,
@@ -100,30 +100,17 @@ export async function POST(request: NextRequest) {
 
     const winningArchetype = CAT_ARCHETYPES.find(a => a.key === winningArchetypeKey)!;
 
-    // Save or update quiz result
-    const existingResult = getQuizResultByDiscordId(session.discordUserId);
-
-    if (existingResult) {
-      updateQuizResult(
-        session.discordUserId,
-        DISCORD_GUILD_ID,
-        winningArchetype.key,
-        winningArchetype.name,
-        scores,
-        answers
-      );
-    } else {
-      saveQuizResult(
-        session.discordUserId,
-        session.username,
-        session.avatar,
-        DISCORD_GUILD_ID,
-        winningArchetype.key,
-        winningArchetype.name,
-        scores,
-        answers
-      );
-    }
+    // Save or update quiz result (saveQuizResult handles both insert and update)
+    await saveQuizResult(
+      session.discordUserId,
+      session.username,
+      session.avatar || null,
+      DISCORD_GUILD_ID,
+      winningArchetype.key,
+      winningArchetype.name,
+      JSON.stringify(scores),
+      JSON.stringify(answers)
+    );
 
     // Assign Discord role (removes old quiz roles and adds new one)
     let roleAssigned = false;

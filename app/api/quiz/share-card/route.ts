@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getQuizResultByDiscordId } from '@/lib/database';
+import { getQuizResult } from '@/lib/database-async';
 import { CAT_ARCHETYPES } from '@/lib/quizConfig';
 
 export async function GET(request: NextRequest) {
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const session = JSON.parse(sessionCookie.value);
     
     // Get user's quiz result
-    const result = getQuizResultByDiscordId(session.discordUserId);
+    const result = await getQuizResult(session.discordUserId);
     
     if (!result) {
       return NextResponse.json(

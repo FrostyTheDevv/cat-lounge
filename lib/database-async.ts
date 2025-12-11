@@ -437,3 +437,26 @@ export async function resetFailedAttempts(username: string) {
     [username]
   );
 }
+
+export async function saveAnswerPattern(
+  discordUserId: string,
+  questionId: number,
+  answerIndex: number,
+  archetypeWeights: Record<string, number>
+) {
+  await execute(
+    `INSERT OR REPLACE INTO quiz_answer_patterns 
+    (discord_user_id, question_id, answer_index, archetype_weights, completed_at)
+    VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)`,
+    [discordUserId, questionId, answerIndex, JSON.stringify(archetypeWeights)]
+  );
+}
+
+export interface AnswerPattern {
+  id: number;
+  discord_user_id: string;
+  question_id: number;
+  answer_index: number;
+  archetype_weights: string;
+  completed_at: string;
+}

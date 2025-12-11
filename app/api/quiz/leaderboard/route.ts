@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import db from '@/lib/database';
+import { queryAll } from '@/lib/db-client';
 
 interface LeaderboardEntry {
   discord_username: string;
@@ -15,7 +15,7 @@ interface LeaderboardEntry {
 export async function GET() {
   try {
     // Get archetype counts for rarity calculation
-    const archetypeCountsStmt = db.prepare(`
+    const archetypeCounts = await queryAll<{ archetype_key: string; count: number }>(`
       SELECT archetype_key, COUNT(*) as count
       FROM (
         SELECT discord_user_id, archetype_key
@@ -26,7 +26,6 @@ export async function GET() {
       GROUP BY archetype_key
     `);
     
-    const archetypeCounts = archetypeCountsStmt.all() as { archetype_key: string; count: number }[];
     const totalUsers = archetypeCounts.reduce((sum, row) => sum + row.count, 0);
     
     // Calculate rarity scores for each archetype
@@ -37,7 +36,7 @@ export async function GET() {
     });
 
     // Get latest results with user info
-    const stmt = db.prepare(`
+    const results = await queryAll<any>(`
       SELECT 
         qr.discord_user_id,
         qr.discord_username,
@@ -55,8 +54,6 @@ export async function GET() {
         AND qr.updated_at = latest.latest
       ORDER BY qr.completed_at ASC
     `);
-
-    const results = stmt.all() as any[];
 
     // Calculate uniqueness scores and assign tiers
     const leaderboard: LeaderboardEntry[] = results.map((result) => {
